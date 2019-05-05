@@ -19,8 +19,17 @@ class SessionController {
       console.log('Senha incorreta')
       return res.redirect('/')
     }
-    console.log('Entrou')
+
+    req.session.user = user
+
     return res.redirect('/app/dashboard')
+  }
+
+  destroy (req, res) {
+    req.session.desttroy(() => {
+      res.clearCookie('root')
+      return res.redirect('/')
+    })
   }
 }
 
