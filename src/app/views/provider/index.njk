@@ -5,17 +5,26 @@
 <div class="content">
   <strong>Olá {{ user.name }}</strong>
   <p>Veja abaixo seus agendamentos</p>
-  <ul class="providers">
-  {% for appointment in appointments %}
-  <li class="provider">
-      <div>
-        <img src="/files/{{ appointment.user.avatar }}" alt="">
-        <strong>{{ appointment.user.name }}</strong>
-      </div>
-      {{ appointment.date | date('HH:mm') }}</li>
-  {% endfor %}
-  </ul>
+
+  <input type="text" class="flatpickr" placeholder="Escolha uma data" />
+
+  <ul class="providers" id="providers"></ul>
   <a href="/app/dashboard" class="appointment">Voltar</a>
 </div>
+
+<script type="text/javascript">
+  flatpickr('.flatpickr', {
+    minDate: new Date(),
+    dateFormat: 'd/m/Y',
+    onChange: function(date){
+      fetch(`/app/confirmed/{{ user.id }}?date=${date[0].getTime()}`)
+      .then(function(response){
+        response.text().then(function(html){
+          document.getElementById('providers').innerHTML = html
+        })
+      })
+    }
+  })
+</script>
 
 {% endblock %}
