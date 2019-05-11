@@ -16,4 +16,4 @@ Crie uma seção para o prestador de serviços acompanhar os agendamentos do 
 
 ## Entrega
 
-Esse desafio não precisa ser entregue e não receberá correção, mas você pode ver o resultado do código do desafio feito por mim aqui: https://github.com/Rocketseat/bootcamp-n odejs-desafio-02
+Esse desafio não precisa ser entregue e não receberá correção, mas você pode ver o resultado do código do desafio feito por mim aqui: https://github.com/Rocketseat/bootcamp-nodejs-desafio-02
