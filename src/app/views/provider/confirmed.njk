@@ -1,5 +1,5 @@
-{% if appointments %}
-  {% for appointment in appointments %}
+{% if appointments.count > 0 %}
+  {% for appointment in appointments.rows %}
   <li class="provider">
       <div>
         <img src="/files/{{ appointment.user.avatar }}" alt="">

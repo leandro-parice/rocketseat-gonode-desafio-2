@@ -17,7 +17,7 @@ class ProviderController {
 
     const { id } = req.session.user
 
-    const appointments = await Appointment.findAll({
+    const appointments = await Appointment.findAndCountAll({
       include: [{ model: User, as: 'user' }],
       where: {
         provider_id: id,
@@ -29,6 +29,8 @@ class ProviderController {
         }
       }
     })
+
+    console.log(appointments)
 
     return res.render('provider/confirmed', { appointments })
   }
